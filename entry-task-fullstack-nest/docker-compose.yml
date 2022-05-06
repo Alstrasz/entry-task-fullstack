@@ -4,8 +4,8 @@ services:
         image: mongo:4.2
         container_name: mongodb
         hostname: mongodb
-        volumes:
-            - /var/data/pl-nestjs-back/mongod:/data/db/
+        # volumes:
+        #    - /var/data/pl-nestjs-back/mongod:/data/db/
         ports:
             - "8087:27017"
         command: [ "--bind_ip_all"]
