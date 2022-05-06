@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+    mongodb:
+        image: mongo:4.2
+        container_name: mongodb
+        hostname: mongodb
+        volumes:
+            - /var/data/pl-nestjs-back/mongod:/data/db/
+        ports:
+            - "8087:27017"
+        command: [ "--bind_ip_all"]
+        restart: "no"
+
+    pl-nestjs-back:
+        image: node:16
+        container_name: pl-nestjs-back
+        restart: "no"
+        environment:
+          - PORT=8080
+          - HOST=0.0.0.0
+          - MONGO_URI=mongodb://mongodb:27017
+          - JWT_SECRET=from_docker
+        ports:
+          - 3000:8080
+        volumes:
+          - .:/app
+        depends_on:
+          - mongodb
+        command: bash -c "npm install --prefix=/app && npm run start:dev --prefix=/app"
