@@ -1,8 +1,12 @@
-on: push
-name: Linter
+on:
+  push:
+  pull_request:
+
+name: Linter nest
+
 jobs:
-  test:
-    name: lint
+  lint:
+    name: lint nest
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -14,10 +18,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: npm install
-        run: npm install
+        run: npm install --prefix=./entry-task-fullstack-nest
         env:
           CI: true
       - name: npm lint
-        run: npm run lint
+        run: npm run lint --prefix=./entry-task-fullstack-nest
         env:
           CI: true
