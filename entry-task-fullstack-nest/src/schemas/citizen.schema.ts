@@ -10,13 +10,13 @@ export interface CitizenGroup {
 
 @Schema()
 export class Citizen {
-    @Prop( { required: true, unique: true } )
-        id: string;
+    @Prop( { required: true } )
+        id: number;
 
     @Prop( { required: true } )
         name: string;
 
-    @Prop( { required: true, unique: true } )
+    @Prop( { required: true } )
         city_id: number;
 
     @Prop( { required: true, default: [] } )

@@ -11,7 +11,7 @@ export interface CityGroup {
 @Schema()
 export class City {
     @Prop( { required: true, unique: true } )
-        id: string;
+        id: number;
 
     @Prop( { required: true } )
         name: string;
