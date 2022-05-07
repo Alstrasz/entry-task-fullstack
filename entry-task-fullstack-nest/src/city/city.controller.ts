@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { CityService } from './city.service';
 import { CityDto } from './dto/city.dto';
 import { ApiTags, ApiOperation, ApiOkResponse } from '@nestjs/swagger';
@@ -16,5 +16,18 @@ export class CityController {
             .map( ( el ) => {
                 return new CityDto( el );
             } );
+    }
+
+    @ApiOperation( {
+        summary: 'Returns array of cities with a corresponding name from City collection',
+        description: 'Mostly returns array of one element, but technically it is possible to have multiple cities with the same name',
+    } )
+    @Get( ':name' )
+    @ApiOkResponse( { type: CityDto } )
+    async get_by_name ( @Param( 'name' ) name: string ): Promise<Array<CityDto>> {
+        return ( await this.city_service.get_city_by_name( name ) )
+            .map( ( el ) => {
+                return new CityDto( el );
+            } ); ;
     }
 }

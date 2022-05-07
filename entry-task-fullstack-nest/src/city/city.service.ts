@@ -20,4 +20,8 @@ export class CityService {
     async get_all_cities (): Promise<Array<CityDocument>> {
         return this.city_model.find( {} ).lean();
     }
+
+    async get_city_by_name ( name: string ): Promise<Array<CityDocument>> {
+        return this.city_model.find( { name } ).lean();
+    }
 }
