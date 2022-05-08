@@ -19,11 +19,30 @@ export class CitizenService {
         } );
     }
 
+
+    /**
+     * Returns all documents from citizen collection
+     *
+     * @return {*}  {Promise<Array<CitizenDocument>>}
+     * @memberof CitizenService
+     */
     async get_all_citizens (): Promise<Array<CitizenDocument>> {
         return this.citizen_model.find( {} ).lean();
     }
 
+
+    /**
+     * Returns all documents from citizen collection grouped by order
+     * Throws error if order is empty
+     *
+     * @param {Array<string>} order
+     * @return {*}  {Promise<NestedCitizen>}
+     * @memberof CitizenService
+     */
     async group_by ( order: Array<string> ): Promise<NestedCitizen> {
+        if ( order == [] ) {
+            throw new Error( 'Order should not be empry' );
+        }
         return this.citizen_model.aggregate( [
             {
                 $project: {
@@ -41,39 +60,6 @@ export class CitizenService {
                     },
                 },
             },
-            // {
-            //     $group: {
-            //         _id: null,
-            //         elems: {
-            //             $accumulator: {
-            //                 init: ( _order: Array<string> ): NestedDecomposedCitizen => {
-            //                     return {};
-            //                 },
-            //                 initArgs: [order], // Optional
-            //                 accumulate: (
-            //                     state: NestedDecomposedCitizen,
-            //                     root: DecomposedCitizen,
-            //                     order: Array<string>,
-            //                 ): NestedDecomposedCitizen => {
-            //                     const path = order.map( ( key ) => root.groups[key] );
-            //                     path.push( _.get( state, path, [] ).length );
-            //                     _.set( state, path, root );
-            //                     return state;
-            //                 },
-            //                 accumulateArgs: ['$$ROOT', order],
-            //                 merge: ( state_1: NestedDecomposedCitizen, state_2: NestedDecomposedCitizen ): NestedDecomposedCitizen => {
-            //                     return _.mergeWith( state_1, state_2, ( objValue, srcValue ) => {
-            //                         if ( _.isArray( objValue ) ) {
-            //                             return objValue.concat( srcValue );
-            //                         }
-            //                     } );
-            //                 },
-            //                 lang: 'js',
-            //             },
-            //         },
-
-            //     },
-            //  },
         ] ).then( ( el ) => {
             const acc = {};
             el.forEach( ( root ) => {

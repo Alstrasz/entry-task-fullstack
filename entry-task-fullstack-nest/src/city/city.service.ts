@@ -17,10 +17,25 @@ export class CityService {
         } );
     }
 
+
+    /**
+     * Returns all documents from city collection
+     *
+     * @return {*}  {Promise<Array<CityDocument>>}
+     * @memberof CityService
+     */
     async get_all_cities (): Promise<Array<CityDocument>> {
         return this.city_model.find( {} ).lean();
     }
 
+
+    /**
+     * Returns all documents from city collection this corresponding name
+     *
+     * @param {string} name
+     * @return {*}  {Promise<Array<CityDocument>>}
+     * @memberof CityService
+     */
     async get_city_by_name ( name: string ): Promise<Array<CityDocument>> {
         return this.city_model.find( { name } ).lean();
     }

@@ -1,10 +1,13 @@
-import { ClassSerializerInterceptor, INestApplication } from '@nestjs/common';
+import { ClassSerializerInterceptor, INestApplication, ValidationPipe } from '@nestjs/common';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 export function apply_middleware ( app: INestApplication ) {
     app.useGlobalInterceptors( new ClassSerializerInterceptor( app.get( Reflector ) ) );
+    app.useGlobalPipes( new ValidationPipe( {
+        whitelist: true,
+    } ) );
     app.enableCors();
 }
 

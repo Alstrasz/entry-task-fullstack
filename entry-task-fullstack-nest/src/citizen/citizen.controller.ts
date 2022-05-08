@@ -12,7 +12,7 @@ export class CitizenController {
 
     @Get( '' )
     @ApiOperation( { summary: 'Returns all objects stored in Citizen collection' } )
-    @ApiOkResponse( { type: CitizenDto } )
+    @ApiOkResponse( { type: [CitizenDto] } )
     async get_all (): Promise<Array<CitizenDto>> {
         return ( await this.citizen_service.get_all_citizens() )
             .map( ( el ) => {
