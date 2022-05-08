@@ -5,6 +5,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 export function apply_middleware ( app: INestApplication ) {
     app.useGlobalInterceptors( new ClassSerializerInterceptor( app.get( Reflector ) ) );
+    app.enableCors();
 }
 
 

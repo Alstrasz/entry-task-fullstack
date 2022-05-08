@@ -1,0 +1,14 @@
+<ul class="menu-list" *ngIf="is_array(data); else notArray">
+    <li class="menu-list" *ngFor="let citizen of data">
+        {{citizen.name}}
+    </li>
+</ul>
+
+<ng-template #notArray>
+    <ul class="menu-list">
+        <li class="menu-list" *ngFor="let prop of data | keyvalue">
+            <p>{{prop.key}}</p>
+            <citizens-grouped-up-view-inner [data]="prop.value"></citizens-grouped-up-view-inner>
+        </li>
+    </ul>
+</ng-template>

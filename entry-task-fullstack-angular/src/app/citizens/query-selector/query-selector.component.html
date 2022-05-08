@@ -1,0 +1,12 @@
+<div class="level">
+    <div class="level-left">
+        <button class="button" (click)="send_request()">Send</button>
+    </div>
+    <div class="level-right">
+        <button class="button" (click)="pop_element()">Pop element</button>
+        <button class="button" (click)="append_element()">Append element</button>
+    </div>
+</div>
+<p>
+    <input *ngFor="let elem of data" class="input is-normal query_input_elemet" type="text" placeholder="Query" [(ngModel)]="elem.data">
+</p>
