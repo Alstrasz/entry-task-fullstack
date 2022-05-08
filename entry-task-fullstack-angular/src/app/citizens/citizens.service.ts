@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import * as cache from 'memory-cache';
 import { City } from './interfaces/city.interface';
 import * as _ from 'lodash';
+import { server_base_url } from '../constants/url';
 
 @Injectable( {
     providedIn: 'root',
@@ -17,13 +18,13 @@ export class CitizensService {
     async request_grouped_up_citiznes ( query: Array<string> ) {
         if ( query.length == 0 ) {
             this.grouped_up_citizens = ( await axios( {
-                baseURL: 'http://127.0.0.1:3000',
+                baseURL: server_base_url,
                 method: 'get',
                 url: '/citizen',
             } ) ).data;
         } else {
             this.grouped_up_citizens = ( await axios( {
-                baseURL: 'http://127.0.0.1:3000',
+                baseURL: server_base_url,
                 method: 'post',
                 url: '/citizen/grouped',
                 data: {
@@ -41,7 +42,7 @@ export class CitizensService {
         let ret = cache.get( city_name );
         if ( ret === null ) {
             ret = await axios( {
-                baseURL: 'http://127.0.0.1:3000',
+                baseURL: server_base_url,
                 method: 'get',
                 url: `/city/${city_name}`,
             } )
