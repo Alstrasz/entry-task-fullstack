@@ -16,7 +16,7 @@ export function setup_swagger ( app: INestApplication ) {
     const config = new DocumentBuilder()
         .setTitle( 'entry-task-fullstack-nest' )
         .setDescription( 'Api descciption of entry-task-fullstack-nest, project build to pass entry test. App provides access to database through some queryes, in particluar, custom group by' )
-        .setVersion( '0.1' )
+        .setVersion( '1.0.0' )
         .addTag( 'App' )
         .build();
     const document = SwaggerModule.createDocument( app, config );

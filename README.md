@@ -2,13 +2,15 @@
 
 This is a smiple project to pass entry test. It loads data from json to database and serves it to client. There is abiliy to generate tree-like structure from data
 
-Description can be found at "../JS Fullstack Home Task.docx"
+Description can be found at "./JS Fullstack Home Task.docx"
 
 # Used technologies
 
-- mongoose
+- Mongodb used as database
 
-- NestJS
+- NestJS used as backend framework
+
+- Angular used as frontend framework
 
 - Honorable mentions: 
     - swagger-ui-express
@@ -16,6 +18,18 @@ Description can be found at "../JS Fullstack Home Task.docx"
     - eslint
 
 # How to run
+
+## With docker compose
+
+From project's root folder:
+
+- ```docker-compose up``` (can take a long time first time due to downloading of images and libraries)
+
+Client will be available at http://127.0.0.1:3000
+
+Swagger will be available at http://127.0.0.1:3000/api
+
+## With node
 
 Requiers mongodb to be launched
 
