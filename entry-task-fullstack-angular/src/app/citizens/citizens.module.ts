@@ -5,6 +5,7 @@ import { QuerySelectorComponent } from './query-selector/query-selector.componen
 import { WindowComponent } from './window/window.component';
 import { FormsModule } from '@angular/forms';
 import { GroupedUpViewInnerComponent } from './grouped-up-view-inner/grouped-up-view-inner.component';
+import { CitizenTextComponent } from './citizen-text/citizen-text.component';
 
 
 @NgModule( {
@@ -13,6 +14,7 @@ import { GroupedUpViewInnerComponent } from './grouped-up-view-inner/grouped-up-
         QuerySelectorComponent,
         WindowComponent,
         GroupedUpViewInnerComponent,
+        CitizenTextComponent,
     ],
     imports: [
         CommonModule,

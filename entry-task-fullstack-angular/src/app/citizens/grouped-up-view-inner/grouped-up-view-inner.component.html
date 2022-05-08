@@ -1,6 +1,7 @@
 <ul class="menu-list" *ngIf="is_array(data); else notArray">
     <li class="menu-list" *ngFor="let citizen of data">
-        {{citizen.name}}
+        <citizens-citizen-text [citizen]="citizen"></citizens-citizen-text>
+        <!--<a href="" [title]="'wheee'" (click)="false">{{citizen.name}}</a>-->
     </li>
 </ul>
 

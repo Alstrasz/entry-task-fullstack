@@ -9,7 +9,7 @@ import * as _ from 'lodash';
 export class GroupedUpViewInnerComponent implements OnInit {
     @Input() data: any = [];
 
-    constructor () { }
+    constructor ( ) { }
 
     ngOnInit (): void {
     }
