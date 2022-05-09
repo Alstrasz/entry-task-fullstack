@@ -23,4 +23,4 @@ services:
           - ./entry-task-fullstack-nest:/app
         depends_on:
           - mongodb
-        command: bash -c "npm install --prefix=/app && npm run start:dev --prefix=/app"
+        command: bash -c "echo installing packages && npm install --prefix=/app && echo launching && npm run start:dev --prefix=/app"

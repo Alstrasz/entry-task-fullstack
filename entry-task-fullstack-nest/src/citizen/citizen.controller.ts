@@ -29,7 +29,6 @@ export class CitizenController {
     @ApiOkResponse( { type: NestedCitizenDto } )
     async get_grouped ( @Body() group_by_request_dto: GroupByRequestDto ): Promise<NestedCitizenDto> {
         const values = await this.citizen_service.group_by( group_by_request_dto.query );
-        console.log( values );
         return new NestedCitizenDto( values );
     }
 }
